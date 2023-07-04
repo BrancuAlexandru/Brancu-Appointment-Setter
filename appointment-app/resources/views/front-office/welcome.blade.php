@@ -14,7 +14,7 @@
         <button type="button" class="btn btn-primary navbar-btn m-1">Log In</button>
       </div>
     </nav>
-    <form action="" style="max-width: 24%; margin: 100px auto; background-color: #efefef; padding: 20px 12px; border-radius: 20px;" class="d-flex flex-column justify-center align-items-center">
+    <form action="" style="max-width: max-content; margin: 100px auto; background-color: #efefef; padding: 20px 12px; border-radius: 20px;" class="d-flex flex-column justify-center align-items-center">
       <h2>Set Appointment</h2>
       <div class="d-flex flex-row justify-content-evenly" style="width: 100%; margin: 15px 0;">
         <select name="selectedMonth" id="selectedMonth" class="form-select" aria-label="selectedMonth" required style="width: max-content;">
