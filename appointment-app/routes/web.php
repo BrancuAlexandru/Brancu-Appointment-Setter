@@ -21,6 +21,6 @@ Route::get('/management', function () {
   return view('./back-office.management');
 });
 
-Route::get('/register', function () {
-  return view('./authentication.register');
-});
+Route::get('/register', App\Http\Controllers\Authentication\RegistrationController::class);
+
+Route::get('/login', App\Http\Controllers\Authentication\LoginController::class);

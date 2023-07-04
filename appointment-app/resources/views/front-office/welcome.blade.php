@@ -10,11 +10,15 @@
   <main>
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #eee;">
       <div class="container d-flex justify-content-end">
-        <button type="button" class="btn btn-success navbar-btn m-1">Sign Up</button>
-        <button type="button" class="btn btn-primary navbar-btn m-1">Log In</button>
+        <button type="button" class="btn btn-success navbar-btn m-1" onclick="goToRegisterPage()">Sign Up</button>
+        <button type="button" class="btn btn-primary navbar-btn m-1" onclick="goToLoginPage()">Log In</button>
       </div>
     </nav>
     @include('sections.dateTimeSelector')
   </main>
+  <script>
+    let goToRegisterPage = () => window.location.href += 'register';
+    let goToLoginPage = () => window.location.href += 'login';
+  </script>
 </body>
 </html>

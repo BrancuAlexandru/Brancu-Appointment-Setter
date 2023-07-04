@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Authentication;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class RegistrationController extends Controller
+class LoginController extends Controller
 {
   public function __invoke()
   {
-    return view('authentication.register');
+    return view('authentication.login');
   }
 }
