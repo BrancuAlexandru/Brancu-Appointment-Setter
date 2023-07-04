@@ -19,13 +19,13 @@
   </div>
   <div id="daySelection" class="container d-flex flex-column justify-center align-items-center">
     <div id="daysOfTheWeek" class="row row-cols-10 flex-row justify-content-center align-items-center">
-      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Su</button>
-      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 9px; padding-right: 9px;" disabled>Mo</button>
-      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Tu</button>
-      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 9px; padding-right: 9px;" disabled>We</button>
-      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Th</button>
-      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Fr</button>
-      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Sa</button>
+      <p class="m-1 col-sm-1"  style="width: max-content;" >Su</p>
+      <p class="m-1 col-sm-1"  style="width: max-content;" >Mo</p>
+      <p class="m-1 col-sm-1"  style="width: max-content; padding-left: 4px; padding-right: 12px;" >Tu</p>
+      <p class="m-1 col-sm-1"  style="width: max-content;" >We</p>
+      <p class="m-1 col-sm-1"  style="width: max-content;" >Th</p>
+      <p class="m-1 col-sm-1"  style="width: max-content;" >Fr</p>
+      <p class="m-1 col-sm-1"  style="width: max-content; padding-left: 17px;" >Sa</p>
     </div>
     <div  class="container d-flex flex-column justify-center align-items-center">
       <div id="week1" class="row row-cols-10 flex-row justify-content-center align-items-center">
