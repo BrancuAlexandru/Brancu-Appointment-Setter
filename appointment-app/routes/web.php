@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('./front-office/welcome');
+    return view('./front-office.welcome');
+});
+
+Route::get('/management', function () {
+  return view('./back-office.management');
+});
+
+Route::get('/register', function () {
+  return view('./authentication.register');
 });

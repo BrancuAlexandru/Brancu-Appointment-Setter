@@ -9,7 +9,8 @@
 <body>
   <main>
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #eee;">
-      <div class="container d-flex justify-content-end">
+      <div class="container d-flex justify-content-between">
+        <button type="button" class="btn btn-success navbar-btn m-1">Add Appointment</button>
         <button type="button" class="btn btn-danger navbar-btn m-1">Log Out</button>
       </div>
     </nav>

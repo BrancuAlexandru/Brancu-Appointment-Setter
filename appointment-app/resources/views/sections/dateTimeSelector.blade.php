@@ -17,9 +17,18 @@
       <option value="20:00-21:00">20:00 - 21:00</option>
     </select>
   </div>
-  <div id="selectedDay">
-    <div id="week1" class="container d-flex flex-column justify-center align-items-center">
-      <div class="row row-cols-10 flex-row justify-content-center align-items-center">
+  <div id="daySelection" class="container d-flex flex-column justify-center align-items-center">
+    <div id="daysOfTheWeek" class="row row-cols-10 flex-row justify-content-center align-items-center">
+      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Su</button>
+      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 9px; padding-right: 9px;" disabled>Mo</button>
+      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Tu</button>
+      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 9px; padding-right: 9px;" disabled>We</button>
+      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Th</button>
+      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Fr</button>
+      <button class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" disabled>Sa</button>
+    </div>
+    <div  class="container d-flex flex-column justify-center align-items-center">
+      <div id="week1" class="row row-cols-10 flex-row justify-content-center align-items-center">
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">1</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">2</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">3</p>
@@ -28,7 +37,7 @@
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">6</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">7</p>
       </div>
-      <div class="row row-cols-10 flex-row justify-content-center align-items-center">
+      <div id="week2" class="row row-cols-10 flex-row justify-content-center align-items-center">
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">8</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">9</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">10</p>
@@ -37,7 +46,7 @@
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">13</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">14</p>
       </div>
-      <div class="row row-cols-10 flex-row justify-content-center align-items-center">
+      <div id="week3" class="row row-cols-10 flex-row justify-content-center align-items-center">
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">15</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">16</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">17</p>
@@ -46,7 +55,7 @@
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">20</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">21</p>
       </div>
-      <div class="row row-cols-10 flex-row justify-content-center align-items-center">
+      <div id="week4" class="row row-cols-10 flex-row justify-content-center align-items-center">
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">22</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">23</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">24</p>
@@ -55,7 +64,7 @@
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">27</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">28</p>
       </div>
-      <div class="row row-cols-7 flex-row justify-content-start align-items-center">
+      <div id="week5" class="row row-cols-7 flex-row justify-content-start align-items-center">
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">29</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">30</p>
         <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">31</p>
