@@ -14,6 +14,7 @@
         <button type="button" class="btn btn-success navbar-btn m-1" onclick="goToLoginPage()">Log In</button>
       </div>
     </nav>
+    @include('sections.registerForm')
   </main>
   <script>
     let goToLoginPage = () => window.location.href = 'login';
