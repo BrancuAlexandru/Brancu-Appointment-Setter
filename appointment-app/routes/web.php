@@ -30,3 +30,5 @@ Route::post('/register', [App\Http\Controllers\Authentication\RegistrationContro
 
 Route::get('/login', App\Http\Controllers\Authentication\LoginController::class)->name('login');
 Route::post('/login', [App\Http\Controllers\Authentication\LoginController::class, 'authenticate']);
+
+Route::post('/logout', App\Http\Controllers\Authentication\LogoutController::class)->name('logout');
