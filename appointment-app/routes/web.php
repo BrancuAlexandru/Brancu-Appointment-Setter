@@ -29,3 +29,4 @@ Route::get('/register', App\Http\Controllers\Authentication\RegistrationControll
 Route::post('/register', [App\Http\Controllers\Authentication\RegistrationController::class, 'store']);
 
 Route::get('/login', App\Http\Controllers\Authentication\LoginController::class)->name('login');
+Route::post('/login', [App\Http\Controllers\Authentication\LoginController::class, 'authenticate']);
