@@ -1,4 +1,5 @@
-<form action="" style="max-width: 70%; margin-top: 2px; margin-left: auto; margin-right: auto;">
+<form action="" method="" style="max-width: 70%; margin-top: 2px; margin-left: auto; margin-right: auto;">
+  @csrf
   <div class="container text-center d-flex flex-row align-items-start justify-content-center" style="width: 80%; margin: 0 auto;">
     <div id="column1" class="d-flex flex-column align-items-center justify-content-center" style="background-color: #efefef; max-width: max-content;">
       <p style="margin-bottom: 0; padding: 10px 20px; border-right: 2px solid white; width: 100%;">Email</p>

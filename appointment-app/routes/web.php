@@ -15,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('./front-office.welcome');
-});
+})->name('makeAppointment');
+
+/* Route::post('/', [App\Http\Controllers\Authentication\AppointmentController::class, 'store']); MAKE APPOINTMENT SETTTING CONTROLLER*/
 
 Route::get('/management', function () {
   return view('./back-office.management');
-});
+})->name('makeAppointmentManagement');
 
-Route::get('/register', App\Http\Controllers\Authentication\RegistrationController::class);
+/* Route::post('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'store']); MAKE APPOINTMENT SETTTING CONTROLLER*/
 
-Route::get('/login', App\Http\Controllers\Authentication\LoginController::class);
+Route::get('/register', App\Http\Controllers\Authentication\RegistrationController::class)->name('register');
+Route::post('/register', [App\Http\Controllers\Authentication\RegistrationController::class, 'store']);
+
+Route::get('/login', App\Http\Controllers\Authentication\LoginController::class)->name('login');

@@ -1,4 +1,4 @@
-<form action="/" method="post" style="max-width: max-content; margin: 100px auto; background-color: #efefef; padding: 20px 12px; border-radius: 20px;" class="d-flex flex-column justify-center align-items-center">
+<form action="/management" method="post" style="max-width: max-content; margin: 100px auto; background-color: #efefef; padding: 20px 12px; border-radius: 20px;" class="d-flex flex-column justify-center align-items-center">
   @csrf
   <h2>Set Appointment</h2>
   <div class="d-flex flex-row justify-content-evenly" style="width: 100%; margin: 15px 0;">
