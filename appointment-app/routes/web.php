@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/management', function () {
   return view('./back-office.management');
-})->name('makeAppointmentManagement');
+})->name('makeAppointmentManagement')->middleware('auth');
 
 /* Route::post('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'store']); MAKE APPOINTMENT SETTTING CONTROLLER*/
 
