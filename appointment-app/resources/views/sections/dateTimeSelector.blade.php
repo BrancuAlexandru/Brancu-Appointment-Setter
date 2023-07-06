@@ -20,69 +20,15 @@
     </select>
   </div>
   <div id="daySelection" class="container d-flex flex-column justify-center align-items-center">
-    <input type="text" id="selectedDay" name="selectedDay" value="" style="display: none;" required>
-    <div id="daysOfTheWeek" class="row row-cols-10 flex-row justify-content-center align-items-center">
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Su</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Mo</p>
-      <p class="m-1 col-sm-1"  style="width: max-content; padding-left: 4px; padding-right: 12px;" >Tu</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >We</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Th</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Fr</p>
-      <p class="m-1 col-sm-1"  style="width: max-content; padding-left: 17px;" >Sa</p>
-    </div>
-    <div  class="container d-flex flex-column justify-center align-items-center">
-      <div id="week1" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">1</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">2</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">3</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">4</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">5</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">6</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">7</p>
-      </div>
-      <div id="week2" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">8</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;" onclick="selectDay()">9</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">10</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">11</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">12</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">13</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">14</p>
-      </div>
-      <div id="week3" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">15</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">16</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">17</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">18</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">19</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">20</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">21</p>
-      </div>
-      <div id="week4" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">22</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">23</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">24</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">25</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">26</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">27</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">28</p>
-      </div>
-      <div id="week5" class="row row-cols-7 flex-row justify-content-start align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">29</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">30</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;" onclick="selectDay()">31</p>
-        <p class="m-1 col-sm-1" id="spaceFiller" style="width: 43px"></p>
-        <p class="m-1 col-sm-1" id="spaceFiller" style="width: 43px"></p>
-        <p class="m-1 col-sm-1" id="spaceFiller" style="width: 43px"></p>
-        <p class="m-1 col-sm-1" id="spaceFiller" style="width: 43px"></p>
-      </div>
-    </div>
+    <input type="textarea" id="selectedDay" name="selectedDay" style="display: none;" required>
   </div>
   <input type="submit" value="Submit" class="btn btn-primary" style="margin-top: 15px">
 </form>
 <script>
-  const selectDay = () => {
-    document.getElementById('selectedDay').setAttribute('value', event.target.textContent);
+  const selectDay = (n) => {
+    document.getElementById('selectedDay').setAttribute('value', `${n}`);
+    let day = document.getElementById(`day${n}`);
+    day.setAttribute('style', 'width: max-content; background-color: #1fcf54; border-color: #1fcf54')
   }
 
   const monthData = {
@@ -140,23 +86,53 @@
   }
 
   const createDayButtons = (selectedMonth, monthData) => {
+    let daysToRemove;
+    monthData[selectedMonth] === 'February' ? daysToRemove = monthData.February.nonLeapYear.daysToRemove : daysToRemove = monthData[selectedMonth].daysToRemove;
+    
+    let numberOfRowsToMake = daysToRemove === 3 ? 4 : 5;
+    let dayCounter = 1;
+    let rowContainer = document.createElement('div');
+    rowContainer.className = 'container d-flex flex-column justify-center align-items-center';
 
+    for(let i = 0; i < numberOfRowsToMake; i++) {
+      let row = document.createElement('div');
+      row.id = `week${i+1}`;
+      numberOfRowsToMake === 5 ? (row.className = 'row row-cols-10 flex-row justify-content-center align-items-center') : (row.className = 'row row-cols-7 flex-row justify-content-start align-items-center');
 
+      for(let j = 0; j < 7; j++) {
+        let day = document.createElement('p');
 
-    // create day element and parent row
+        if (i === 4 && j > 2) { /* Switch these magic numbers to variables */
+          day.className = 'm-1 col-sm-1';
+          day.id = 'spaceFiller';
+          day.setAttribute('style', 'width: 43px;');
+        } else {
+          day.className = 'btn btn-secondary m-1 col-sm-1';
+          day.setAttribute('style', 'width: max-content;');
+          dayCounter < 10 ? day.setAttribute('style', 'width: max-content; padding-left: 16px; padding-right: 16px;') : day.setAttribute('style', 'width: max-content;');
+          
+          let currentDay = (new Date).getDate();
 
-    if (selectedMonth === 'February') {
+          day.textContent = `${dayCounter}`;
+          currentDay > Number(day.textContent) ? day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content; padding-left: 16px; padding-right: 16px;') : day.setAttribute('onclick', `selectDay(${dayCounter})`);
+          day.id = `day${dayCounter}`;
 
+          dayCounter++;
+        }
+
+        row.appendChild(day);
+      }
+
+      rowContainer.appendChild(row);
     }
 
-    // gray out days that have passed, remove click handler
+    let parentToWeekRows = document.getElementById('daySelection');
+
+    parentToWeekRows.appendChild(rowContainer);
   }
 
-  const positionWeekDaysCorrectly = () => {
-    let weekDayValues = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-
-    // create week day element and parent row
-  }
+  /* Input selected month dynamically here */
+  createDayButtons('July', monthData);
 
   const createTimeslots = (selectedDay, selectedMonth) => {
     // query db for unavailable timeslots
