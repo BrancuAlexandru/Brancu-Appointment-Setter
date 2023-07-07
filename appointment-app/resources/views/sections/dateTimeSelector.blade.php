@@ -19,7 +19,7 @@
     </select>
   </div>
   <div id="daySelection" class="container d-flex flex-column justify-center align-items-center">
-    <input type="textarea" id="selectedDay" name="selectedDay" style="display: none;" required>
+    <input type="textarea" id="selectedDay" name="selectedDay" style="display: none;" onchange="createTimeslots()" required>
   </div>
   <input type="submit" value="Submit" class="btn btn-primary" style="margin-top: 15px">
 </form>
@@ -271,10 +271,22 @@
     }
   }
 
-  const createTimeslots = (selectedDay, selectedMonth) => {
+  const createTimeslots = () => {
 
-    // query db for unavailable timeslots
+    let selectedMonth = document.getElementById('selectedMonth').value;
+    let selectedDay = document.getElementById('selectedDay').value;
 
-    // create the rest as an option in the timeslot select input
+    // Fa cu AJAX un get request pentru ce ore sunt folosite in
+    // luna si ziua respectiva, dupaia creezi elementele de option.
+
+    fetch('/', {
+      method: 'get'
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
   }
 </script>
