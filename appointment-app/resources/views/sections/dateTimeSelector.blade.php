@@ -2,10 +2,8 @@
   @csrf
   <h2>Set Appointment</h2>
   <div class="d-flex flex-row justify-content-evenly" style="width: 100%; margin: 15px 0;">
-    <select name="selectedMonth" id="selectedMonth" class="form-select border-2" aria-label="selectedMonth" required style="width: max-content;">
+    <select name="selectedMonth" id="selectedMonth" class="form-select border-2" onchange="selectMonth()" aria-label="selectedMonth" required style="width: max-content;">
       <option value="">Select Month</option>
-      <option value="">this month</option>
-      <option value="">next month</option>
     </select>
     <!-- don't forget to put in an input with display none that gets its information filled in by clicking a day button -->
     <select name="selectedTime" id="selectedTime" class="form-select border-2" aria-label="selectedTime" required style="width: max-content;">
@@ -25,10 +23,32 @@
   <input type="submit" value="Submit" class="btn btn-primary" style="margin-top: 15px">
 </form>
 <script>
+  let lastSelectedDay = null;
+
   const selectDay = (n) => {
+
     document.getElementById('selectedDay').setAttribute('value', `${n}`);
     let day = document.getElementById(`day${n}`);
-    day.setAttribute('style', 'width: max-content; background-color: #1fcf54; border-color: #1fcf54')
+    
+    if (lastSelectedDay) {
+
+      lastSelectedDay.setAttribute('style', 'width: max-content; background-color: #6c757d; border-color: #6c757d');
+    
+      if (Number(lastSelectedDay.textContent) < 10) {
+
+        lastSelectedDay.setAttribute('style', 'width: max-content; background-color: #6c757d; border-color: #6c757d; padding-left: 16px; padding-right: 16px;');
+      }
+    }
+    
+    if (Number(day.textContent) < 10) {
+
+      day.setAttribute('style', 'width: max-content; background-color: #1fcf54; border-color: #1fcf54; padding-left: 16px; padding-right: 16px;');
+    } else {
+
+      day.setAttribute('style', 'width: max-content; background-color: #1fcf54; border-color: #1fcf54');
+    }
+
+    lastSelectedDay = day;
   }
 
   const monthData = {
@@ -85,7 +105,49 @@
     }
   }
 
-  const createDayButtons = (selectedMonth, monthData) => {
+  const createMonthSelectorOptions = () => {
+
+    const monthNames = [
+      "January", 
+      "February", 
+      "March", 
+      "April", 
+      "May", 
+      "June", 
+      "July", 
+      "August", 
+      "September", 
+      "October", 
+      "November", 
+      "December"
+    ];
+    const currentMonth = monthNames[(new Date).getMonth()];
+    const nextMonth = monthNames[(new Date).getMonth()+1];
+
+    // create option
+    let option1 = document.createElement('option');
+    let option2 = document.createElement('option');
+
+    option1.textContent = currentMonth;
+    option1.setAttribute('value', currentMonth);
+    option1.id = 'currentMonth';
+    
+    option2.textContent = nextMonth;
+    option2.setAttribute('value', nextMonth);
+    option2.id = 'nextMonth';
+
+    let parentSelector = document.getElementById('selectedMonth');
+
+    parentSelector.appendChild(option1);
+    parentSelector.appendChild(option2);
+  }
+
+  createMonthSelectorOptions();
+
+  const createDayButtons = () => {
+
+    let selectedMonth = document.getElementById('selectedMonth').value;
+
     let daysToRemove;
     monthData[selectedMonth] === 'February' ? daysToRemove = monthData.February.nonLeapYear.daysToRemove : daysToRemove = monthData[selectedMonth].daysToRemove;
     
@@ -93,20 +155,30 @@
     let dayCounter = 1;
     let rowContainer = document.createElement('div');
     rowContainer.className = 'container d-flex flex-column justify-center align-items-center';
+    rowContainer.id = 'dayContainer';
 
     for(let i = 0; i < numberOfRowsToMake; i++) {
+
       let row = document.createElement('div');
       row.id = `week${i+1}`;
-      numberOfRowsToMake === 5 ? (row.className = 'row row-cols-10 flex-row justify-content-center align-items-center') : (row.className = 'row row-cols-7 flex-row justify-content-start align-items-center');
+
+      if (numberOfRowsToMake === 5) {
+        row.className = 'row row-cols-10 flex-row justify-content-center align-items-center';        
+      } else {
+        row.className = 'row row-cols-7 flex-row justify-content-start align-items-center'
+      }
 
       for(let j = 0; j < 7; j++) {
+
         let day = document.createElement('p');
 
-        if (i === 4 && j > 2) { /* Switch these magic numbers to variables */
+        if (i === 4 && j > 2) {
+
           day.className = 'm-1 col-sm-1';
           day.id = 'spaceFiller';
           day.setAttribute('style', 'width: 43px;');
         } else {
+
           day.className = 'btn btn-secondary m-1 col-sm-1';
           day.setAttribute('style', 'width: max-content;');
           dayCounter < 10 ? day.setAttribute('style', 'width: max-content; padding-left: 16px; padding-right: 16px;') : day.setAttribute('style', 'width: max-content;');
@@ -114,7 +186,13 @@
           let currentDay = (new Date).getDate();
 
           day.textContent = `${dayCounter}`;
-          currentDay > Number(day.textContent) ? day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content; padding-left: 16px; padding-right: 16px;') : day.setAttribute('onclick', `selectDay(${dayCounter})`);
+
+          if (currentDay > Number(day.textContent)) {
+            day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content; padding-left: 16px; padding-right: 16px;');
+          } else {
+            day.setAttribute('onclick', `selectDay(${dayCounter})`);
+          }
+
           day.id = `day${dayCounter}`;
 
           dayCounter++;
@@ -129,12 +207,45 @@
     let parentToWeekRows = document.getElementById('daySelection');
 
     parentToWeekRows.appendChild(rowContainer);
+
+    let newFillerDay1 = document.createElement('p');
+    newFillerDay1.className = 'm-1 col-sm-1';
+    newFillerDay1.id = 'spaceFiller';
+    newFillerDay1.setAttribute('style', 'width: 43px;');
+
+    if (daysToRemove === 1) {
+
+      document.getElementById('day31').remove();
+      rowContainer.lastElementChild.appendChild(newFillerDay1);
+    } else if (daysToRemove === 2) {
+
+      let newFillerDay2 = document.createElement('p');
+      newFillerDay2.className = 'm-1 col-sm-1';
+      newFillerDay2.id = 'spaceFiller';
+      newFillerDay2.setAttribute('style', 'width: 43px;');
+
+      document.getElementById('day30').remove();
+      document.getElementById('day31').remove();
+
+      rowContainer.lastElementChild.appendChild(newFillerDay1);
+      rowContainer.lastElementChild.appendChild(newFillerDay2);
+    }
   }
 
-  /* Input selected month dynamically here */
-  createDayButtons('July', monthData);
+  const selectMonth = () => {
+
+    if (document.getElementById('dayContainer')) {
+
+      document.getElementById('dayContainer').remove();
+      createDayButtons();
+    } else {
+
+      createDayButtons();
+    }
+  }
 
   const createTimeslots = (selectedDay, selectedMonth) => {
+
     // query db for unavailable timeslots
 
     // create the rest as an option in the timeslot select input
