@@ -50,17 +50,30 @@ class AppointmentController extends Controller
       ]);
     }
 
-    public function edit(Request $request)
+    public function delete(Request $request)
     {
-      $this->validate($request, [
-        'email' => 'required|email',
-        'selectedDay' => 'required',
-        'selectedMonth' => 'required',
-        'selectedTime' => 'required'
+      Appointment::destroy($request->id);
+
+      $apppointments = Appointment::get();
+
+      return view('back-office.management', [
+        'appointments' => $apppointments
+      ]);
+    }
+
+    public function update(Request $request)
+    {
+      Appointment::where('email', $request->email)->update([
+        'email' => $request->email,
+        'day' => $request->day,
+        'month' => $request->day,
+        'time' => $request->day
       ]);
 
-      // update table row
+      $apppointments = Appointment::get();
 
-      return redirect()->route('appointmentManagement');
+      return view('back-office.management', [
+        'appointments' => $apppointments
+      ]);
     }
 }

@@ -24,7 +24,8 @@ Route::get('/management', function () {
 })->name('appointmentManagement')->middleware('auth');
 
 Route::post('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'addedByManagement'])->name('managementMakeAppointment');
-Route::put('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'edit'])->name('editAppointment');
+Route::put('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'update'])->name('updateAppointment');
+Route::delete('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'delete'])->name('deleteAppointment');
 
 Route::get('/register', App\Http\Controllers\Authentication\RegistrationController::class)->name('register');
 Route::post('/register', [App\Http\Controllers\Authentication\RegistrationController::class, 'store']);

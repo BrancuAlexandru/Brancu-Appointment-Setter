@@ -27,14 +27,27 @@
         @endforeach
       </div>
       <div id="column4" class="d-flex flex-column align-items-center justify-content-center" style="background-color: #efefef; max-width: max-content;">
-        <p style="margin-bottom: 0; padding: 10px 20px; width: 100%;">Actions</p>
+        <p style="margin-bottom: 0; padding: 10px 20px; max-width: max-content;">Actions</p>
         @foreach ($appointments as $appointment)
-          <div style="margin-bottom: 0; width: 100%; margin-left: 0.125rem; margin-right: 0.125rem;">
-            <button class="btn btn-primary m-1" style="padding-top: 0.31rem; padding-bottom: 0.31rem;">Edit</button>
-            <button class="btn btn-danger m-1" style="padding-top: 0.31rem; padding-bottom: 0.31rem;">Delete</button>
+          <div style="margin-bottom: 0; margin-left: 0.125rem; margin-right: 0.125rem; display: inherit;">
+            <form action="{{ route('updateAppointment') }}" method="post">
+              @method('put')
+              <button class="btn btn-primary m-1" style="padding-top: 0.31rem; padding-bottom: 0.31rem; padding-left: 0.4rem; padding-right: 0.4rem;" onclick="openEditMenu()" data-email="{{ $appointment->email }}">Edit</button>
+            </form>
+            <form action="{{ route('deleteAppointment') }}" method="post">
+              @csrf
+              @method('DELETE')
+              <input type="textarea" style="display: none;" value='{{ $appointment->id }}' name="id">
+              <button class="btn btn-danger m-1" type="submit" style="padding-top: 0.31rem; padding-bottom: 0.31rem; padding-left: 0.4rem; padding-right: 0.4rem;">Delete</button>
+            </form>
           </div>
         @endforeach
       </div>
     @endif
   </div>
 </form>
+<script>
+  const openEditMenu = (e) => {
+    console.log(e);
+  }
+</script>
