@@ -7,7 +7,6 @@
     <select name="selectedMonth" id="selectedMonth" class="form-select border-2" onchange="selectMonth()" aria-label="selectedMonth" required style="width: max-content;">
       <option value="">Select Month</option>
     </select>
-    <!-- don't forget to put in an input with display none that gets its information filled in by clicking a day button -->
     <select name="selectedTime" id="selectedTime" class="form-select border-2" aria-label="selectedTime" required style="width: max-content;">
       <option value="">Select Time</option>
       <option value="9:00">9:00</option>
@@ -189,10 +188,36 @@
 
           day.textContent = `${dayCounter}`;
 
-          if (currentDay > Number(day.textContent)) {
-            day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content; padding-left: 16px; padding-right: 16px;');
+          let reformattedDay = dayCounter > 10 ? dayCounter : `0${dayCounter}`;
+          let newDate = new Date(`${selectedMonth} ${reformattedDay}, ${(new Date).getFullYear()}, 02:02:00`);
+          let daysOfTheWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+          let dayOfWeekOfIteration = daysOfTheWeek[newDate.getDay()];
+
+          if (dayOfWeekOfIteration === 'Sunday' || dayOfWeekOfIteration === 'Saturday') {
+
+            day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content;');
+
+            if (currentDay > dayCounter && monthData[selectedMonth].index === (new Date).getMonth() + 1) {
+
+              day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content;');
+            }
+
+            if (dayCounter < 10) {
+              day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content; padding-right: 16px; padding-left: 16px;')
+            }
           } else {
-            day.setAttribute('onclick', `selectDay(${dayCounter})`);
+
+            if (currentDay > dayCounter && monthData[selectedMonth].index === (new Date).getMonth() + 1) {
+
+              day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content;');
+
+              if (dayCounter < 10) {
+                day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content; padding-right: 16px; padding-left: 16px;')
+              }
+            } else {
+
+              day.setAttribute('onclick', `selectDay(${dayCounter})`);
+            }
           }
 
           day.id = `day${dayCounter}`;
