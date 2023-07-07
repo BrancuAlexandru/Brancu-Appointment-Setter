@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->timestamp('set_at');
+            $table->string('day');
+            $table->string('month');
+            $table->string('time');
           });
     }
 

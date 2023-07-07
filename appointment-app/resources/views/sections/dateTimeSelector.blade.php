@@ -1,6 +1,8 @@
 <form action="/" method="post" style="max-width: max-content; margin: 100px auto; background-color: #efefef; padding: 20px 12px; border-radius: 20px;" class="d-flex flex-column justify-center align-items-center">
   @csrf
   <h2>Set Appointment</h2>
+  <label for="email" style="margin-top: 20px; display: block">Email</label>
+  <input type="text" name="email" id="email" required style="display: block;" class="form-control border-2" placeholder="example@gmail.com">
   <div class="d-flex flex-row justify-content-evenly" style="width: 100%; margin: 15px 0;">
     <select name="selectedMonth" id="selectedMonth" class="form-select border-2" onchange="selectMonth()" aria-label="selectedMonth" required style="width: max-content;">
       <option value="">Select Month</option>
@@ -8,13 +10,13 @@
     <!-- don't forget to put in an input with display none that gets its information filled in by clicking a day button -->
     <select name="selectedTime" id="selectedTime" class="form-select border-2" aria-label="selectedTime" required style="width: max-content;">
       <option value="">Select Time</option>
-      <option value="9:00-10:00">9:00 - 10:00</option>
-      <option value="10:30-11:30">10:30 - 11:30</option>
-      <option value="12:00-13:00">12:00 - 13:00</option>
-      <option value="15:30-16:30">15:30 - 16:30</option>
-      <option value="17:00-18:00">17:00 - 18:00</option>
-      <option value="18:30-19:30">18:30 - 19:30</option>
-      <option value="20:00-21:00">20:00 - 21:00</option>
+      <option value="9:00">9:00</option>
+      <option value="10:30">10:30</option>
+      <option value="12:00">12:00</option>
+      <option value="15:30">15:30</option>
+      <option value="17:00">17:00</option>
+      <option value="18:30">18:30</option>
+      <option value="20:00">20:00</option>
     </select>
   </div>
   <div id="daySelection" class="container d-flex flex-column justify-center align-items-center">

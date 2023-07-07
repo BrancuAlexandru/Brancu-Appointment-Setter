@@ -6,7 +6,7 @@
   @error('email')
     <p style="color: red;">Email is not formatted correctly, or already in use.</p>
   @enderror
-  <label for="email" style="margin-top: 20px;">Password</label>
+  <label for="password" style="margin-top: 20px;">Password</label>
   <input type="password" name="password" id="password" required class="form-control border-2">
   <input type="submit" value="Submit" style="margin-top: 20px;" class="btn btn-primary">
 </form>
