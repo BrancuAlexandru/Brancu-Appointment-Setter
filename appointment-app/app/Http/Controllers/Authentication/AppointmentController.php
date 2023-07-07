@@ -43,7 +43,11 @@ class AppointmentController extends Controller
         'time' => $request->selectedTime
       ]);
 
-      return redirect()->route('appointmentManagement');
+      $apppointments = Appointment::get();
+
+      return view('back-office.management', [
+        'appointments' => $apppointments
+      ]);
     }
 
     public function edit(Request $request)

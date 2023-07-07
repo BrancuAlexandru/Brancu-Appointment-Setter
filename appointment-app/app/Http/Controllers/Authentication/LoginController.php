@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -23,6 +24,8 @@ class LoginController extends Controller
       return back()->with('status', 'Invalid login details.');
     }
     
-    return redirect()->route('appointmentManagement');
+    $appointments = Appointment::get();
+
+    return view('back-office.management', ['appointments' => $appointments]);
   }
 }
