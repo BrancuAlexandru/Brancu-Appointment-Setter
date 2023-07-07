@@ -24,7 +24,26 @@ class AppointmentController extends Controller
         'time' => $request->selectedTime
       ]);
 
-      return redirect()->route('makeAppointment');
+      return redirect()->route('home');
+    }
+
+    public function addedByManagement(Request $request)
+    {
+      $this->validate($request, [
+        'email' => 'required|email',
+        'selectedDay' => 'required',
+        'selectedMonth' => 'required',
+        'selectedTime' => 'required'
+      ]);
+
+      Appointment::create([
+        'email' => $request->email,
+        'day' => $request->selectedDay,
+        'month' => $request->selectedMonth,
+        'time' => $request->selectedTime
+      ]);
+
+      return redirect()->route('appointmentManagement');
     }
 
     public function edit(Request $request)
@@ -38,6 +57,6 @@ class AppointmentController extends Controller
 
       // update table row
 
-      return redirect()->route('makeAppointmentManagement');
+      return redirect()->route('appointmentManagement');
     }
 }

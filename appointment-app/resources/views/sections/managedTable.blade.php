@@ -1,4 +1,4 @@
-<form action="" method="" style="max-width: 70%; margin-top: 2px; margin-left: auto; margin-right: auto;">
+<form action="{{ route('managementMakeAppointment') }}" method="post" style="max-width: 70%; margin-top: 2px; margin-left: auto; margin-right: auto;">
   @csrf
   <div class="container text-center d-flex flex-row align-items-start justify-content-center" style="width: 80%; margin: 0 auto;">
     <div id="column1" class="d-flex flex-column align-items-center justify-content-center" style="background-color: #efefef; max-width: max-content;">

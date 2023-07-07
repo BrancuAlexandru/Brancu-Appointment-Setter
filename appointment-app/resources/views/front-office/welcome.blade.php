@@ -17,8 +17,8 @@
     @include('sections.dateTimeSelector')
   </main>
   <script>
-    let goToRegisterPage = () => window.location.href += 'register';
-    let goToLoginPage = () => window.location.href += 'login';
+    let goToRegisterPage = () => window.location.href = 'register';
+    let goToLoginPage = () => window.location.href = 'login';
   </script>
 </body>
 </html>

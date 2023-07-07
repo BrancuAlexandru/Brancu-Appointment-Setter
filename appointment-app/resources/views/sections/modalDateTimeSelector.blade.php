@@ -1,81 +1,255 @@
-<form action="/management" method="post" style="max-width: max-content; margin: 100px auto; background-color: #efefef; padding: 20px 12px; border-radius: 20px;" class="d-flex flex-column justify-center align-items-center">
+<form action="{{ route('managementMakeAppointment') }}" method="post" id="appointmentMakerForm" style="display: none !important; max-width: max-content; margin: 100px auto; background-color: #efefef; padding: 20px 12px; border-radius: 20px;" class="d-flex flex-column justify-center align-items-center">
   @csrf
   <h2>Set Appointment</h2>
+  <label for="email" style="margin-top: 20px; display: block">Email</label>
+  <input type="text" name="email" id="email" required style="display: block;" class="form-control border-2" placeholder="example@gmail.com">
   <div class="d-flex flex-row justify-content-evenly" style="width: 100%; margin: 15px 0;">
-    <select name="selectedMonth" id="selectedMonth" class="form-select border-2" aria-label="selectedMonth" required style="width: max-content;">
+    <select name="selectedMonth" id="selectedMonth" class="form-select border-2" onchange="selectMonth()" aria-label="selectedMonth" required style="width: max-content;">
       <option value="">Select Month</option>
-      <option value="">this month</option>
-      <option value="">next month</option>
     </select>
     <!-- don't forget to put in an input with display none that gets its information filled in by clicking a day button -->
     <select name="selectedTime" id="selectedTime" class="form-select border-2" aria-label="selectedTime" required style="width: max-content;">
       <option value="">Select Time</option>
-      <option value="9:00-10:00">9:00 - 10:00</option>
-      <option value="10:30-11:30">10:30 - 11:30</option>
-      <option value="12:00-13:00">12:00 - 13:00</option>
-      <option value="15:30-16:30">15:30 - 16:30</option>
-      <option value="17:00-18:00">17:00 - 18:00</option>
-      <option value="18:30-19:30">18:30 - 19:30</option>
-      <option value="20:00-21:00">20:00 - 21:00</option>
+      <option value="9:00">9:00</option>
+      <option value="10:30">10:30</option>
+      <option value="12:00">12:00</option>
+      <option value="15:30">15:30</option>
+      <option value="17:00">17:00</option>
+      <option value="18:30">18:30</option>
+      <option value="20:00">20:00</option>
     </select>
   </div>
   <div id="daySelection" class="container d-flex flex-column justify-center align-items-center">
-    <div id="daysOfTheWeek" class="row row-cols-10 flex-row justify-content-center align-items-center">
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Su</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Mo</p>
-      <p class="m-1 col-sm-1"  style="width: max-content; padding-left: 4px; padding-right: 12px;" >Tu</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >We</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Th</p>
-      <p class="m-1 col-sm-1"  style="width: max-content;" >Fr</p>
-      <p class="m-1 col-sm-1"  style="width: max-content; padding-left: 17px;" >Sa</p>
-    </div>
-    <div  class="container d-flex flex-column justify-center align-items-center">
-      <div id="week1" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">1</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">2</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">3</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">4</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">5</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">6</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">7</p>
-      </div>
-      <div id="week2" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">8</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content; padding-left: 16px; padding-right: 16px;">9</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">10</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">11</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">12</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">13</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">14</p>
-      </div>
-      <div id="week3" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">15</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">16</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">17</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">18</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">19</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">20</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">21</p>
-      </div>
-      <div id="week4" class="row row-cols-10 flex-row justify-content-center align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">22</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">23</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">24</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">25</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">26</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">27</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">28</p>
-      </div>
-      <div id="week5" class="row row-cols-7 flex-row justify-content-start align-items-center">
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">29</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">30</p>
-        <p class="btn btn-secondary m-1 col-sm-1"  style="width: max-content;">31</p>
-        <p class="m-1 col-sm-1" style="width: 43px"></p>
-        <p class="m-1 col-sm-1" style="width: 43px"></p>
-        <p class="m-1 col-sm-1" style="width: 43px"></p>
-        <p class="m-1 col-sm-1" style="width: 43px"></p>
-      </div>
-    </div>
+    <input type="textarea" id="selectedDay" name="selectedDay" style="display: none;" required>
   </div>
   <input type="submit" value="Submit" class="btn btn-primary" style="margin-top: 15px">
 </form>
+<script>
+  let lastSelectedDay = null;
+
+  const selectDay = (n) => {
+
+    document.getElementById('selectedDay').setAttribute('value', `${n}`);
+    let day = document.getElementById(`day${n}`);
+    
+    if (lastSelectedDay) {
+
+      lastSelectedDay.setAttribute('style', 'width: max-content; background-color: #6c757d; border-color: #6c757d');
+    
+      if (Number(lastSelectedDay.textContent) < 10) {
+
+        lastSelectedDay.setAttribute('style', 'width: max-content; background-color: #6c757d; border-color: #6c757d; padding-left: 16px; padding-right: 16px;');
+      }
+    }
+    
+    if (Number(day.textContent) < 10) {
+
+      day.setAttribute('style', 'width: max-content; background-color: #1fcf54; border-color: #1fcf54; padding-left: 16px; padding-right: 16px;');
+    } else {
+
+      day.setAttribute('style', 'width: max-content; background-color: #1fcf54; border-color: #1fcf54');
+    }
+
+    lastSelectedDay = day;
+  }
+
+  const monthData = {
+    January: {
+      index: 1,
+      daysToRemove: 0
+    },
+    February: {
+      index: 2,
+      daysToRemove: {
+        leapYear: 2,
+        nonLeapYear: 3
+      }
+    },
+    March: {
+      index: 3,
+      daysToRemove: 0
+    },
+    April: {
+      index: 4,
+      daysToRemove: 1
+    },
+    May: {
+      index: 5,
+      daysToRemove: 0
+    },
+    June: {
+      index: 6,
+      daysToRemove: 1
+    },
+    July: {
+      index: 7,
+      daysToRemove: 0
+    },
+    August: {
+      index: 8,
+      daysToRemove: 0
+    },
+    September: {
+      index: 9,
+      daysToRemove: 1
+    },
+    October: {
+      index: 10,
+      daysToRemove: 0
+    },
+    November: {
+      index: 11,
+      daysToRemove: 1
+    },
+    December: {
+      index: 13,
+      daysToRemove: 0
+    }
+  }
+
+  const createMonthSelectorOptions = () => {
+
+    const monthNames = [
+      "January", 
+      "February", 
+      "March", 
+      "April", 
+      "May", 
+      "June", 
+      "July", 
+      "August", 
+      "September", 
+      "October", 
+      "November", 
+      "December"
+    ];
+    const currentMonth = monthNames[(new Date).getMonth()];
+    const nextMonth = monthNames[(new Date).getMonth()+1];
+
+    // create option
+    let option1 = document.createElement('option');
+    let option2 = document.createElement('option');
+
+    option1.textContent = currentMonth;
+    option1.setAttribute('value', currentMonth);
+    option1.id = 'currentMonth';
+    
+    option2.textContent = nextMonth;
+    option2.setAttribute('value', nextMonth);
+    option2.id = 'nextMonth';
+
+    let parentSelector = document.getElementById('selectedMonth');
+
+    parentSelector.appendChild(option1);
+    parentSelector.appendChild(option2);
+  }
+
+  createMonthSelectorOptions();
+
+  const createDayButtons = () => {
+
+    let selectedMonth = document.getElementById('selectedMonth').value;
+
+    let daysToRemove;
+    monthData[selectedMonth] === 'February' ? daysToRemove = monthData.February.nonLeapYear.daysToRemove : daysToRemove = monthData[selectedMonth].daysToRemove;
+    
+    let numberOfRowsToMake = daysToRemove === 3 ? 4 : 5;
+    let dayCounter = 1;
+    let rowContainer = document.createElement('div');
+    rowContainer.className = 'container d-flex flex-column justify-center align-items-center';
+    rowContainer.id = 'dayContainer';
+
+    for(let i = 0; i < numberOfRowsToMake; i++) {
+
+      let row = document.createElement('div');
+      row.id = `week${i+1}`;
+
+      if (numberOfRowsToMake === 5) {
+        row.className = 'row row-cols-10 flex-row justify-content-center align-items-center';        
+      } else {
+        row.className = 'row row-cols-7 flex-row justify-content-start align-items-center'
+      }
+
+      for(let j = 0; j < 7; j++) {
+
+        let day = document.createElement('p');
+
+        if (i === 4 && j > 2) {
+
+          day.className = 'm-1 col-sm-1';
+          day.id = 'spaceFiller';
+          day.setAttribute('style', 'width: 43px;');
+        } else {
+
+          day.className = 'btn btn-secondary m-1 col-sm-1';
+          day.setAttribute('style', 'width: max-content;');
+          dayCounter < 10 ? day.setAttribute('style', 'width: max-content; padding-left: 16px; padding-right: 16px;') : day.setAttribute('style', 'width: max-content;');
+          
+          let currentDay = (new Date).getDate();
+
+          day.textContent = `${dayCounter}`;
+
+          if (currentDay > Number(day.textContent)) {
+            day.setAttribute('style', 'border-color: #bebebe; background-color: #bebebe; width: max-content; padding-left: 16px; padding-right: 16px;');
+          } else {
+            day.setAttribute('onclick', `selectDay(${dayCounter})`);
+          }
+
+          day.id = `day${dayCounter}`;
+
+          dayCounter++;
+        }
+
+        row.appendChild(day);
+      }
+
+      rowContainer.appendChild(row);
+    }
+
+    let parentToWeekRows = document.getElementById('daySelection');
+
+    parentToWeekRows.appendChild(rowContainer);
+
+    let newFillerDay1 = document.createElement('p');
+    newFillerDay1.className = 'm-1 col-sm-1';
+    newFillerDay1.id = 'spaceFiller';
+    newFillerDay1.setAttribute('style', 'width: 43px;');
+
+    if (daysToRemove === 1) {
+
+      document.getElementById('day31').remove();
+      rowContainer.lastElementChild.appendChild(newFillerDay1);
+    } else if (daysToRemove === 2) {
+
+      let newFillerDay2 = document.createElement('p');
+      newFillerDay2.className = 'm-1 col-sm-1';
+      newFillerDay2.id = 'spaceFiller';
+      newFillerDay2.setAttribute('style', 'width: 43px;');
+
+      document.getElementById('day30').remove();
+      document.getElementById('day31').remove();
+
+      rowContainer.lastElementChild.appendChild(newFillerDay1);
+      rowContainer.lastElementChild.appendChild(newFillerDay2);
+    }
+  }
+
+  const selectMonth = () => {
+
+    if (document.getElementById('dayContainer')) {
+
+      document.getElementById('dayContainer').remove();
+      createDayButtons();
+    } else {
+
+      createDayButtons();
+    }
+  }
+
+  const createTimeslots = (selectedDay, selectedMonth) => {
+
+    // query db for unavailable timeslots
+
+    // create the rest as an option in the timeslot select input
+  }
+</script>

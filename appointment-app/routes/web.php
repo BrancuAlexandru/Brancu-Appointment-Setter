@@ -15,14 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('/front-office.welcome');
-})->name('makeAppointment');
+})->name('home');
 
-Route::post('/', App\Http\Controllers\Authentication\AppointmentController::class)->name('makeAppointment');
-Route::put('/', [App\Http\Controllers\Authentication\AppointmentController::class, 'edit'])->name('editAppointment');
+Route::post('/', App\Http\Controllers\Authentication\AppointmentController::class)->name('clientMakeAppointment');
 
 Route::get('/management', function () {
   return view('./back-office.management');
-})->name('makeAppointmentManagement')->middleware('auth');
+})->name('appointmentManagement')->middleware('auth');
+
+Route::post('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'addedByManagement'])->name('managementMakeAppointment');
+Route::put('/management', [App\Http\Controllers\Authentication\AppointmentController::class, 'edit'])->name('editAppointment');
 
 Route::get('/register', App\Http\Controllers\Authentication\RegistrationController::class)->name('register');
 Route::post('/register', [App\Http\Controllers\Authentication\RegistrationController::class, 'store']);

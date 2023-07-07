@@ -11,6 +11,6 @@ class LogoutController extends Controller
     {
       auth()->logout();
 
-      return view('front-office.welcome');
+      return view('/front-office.welcome');
     }
 }
